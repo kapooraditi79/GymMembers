@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Gym | Health Status</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashMain.css" />
+    <link rel="stylesheet" type="text/css" href="/css/entypo.css" />
+    <link href="/css/a1style.css" type="text/css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body class="page-body page-fade">
+    <div class="page-container sidebar-collapsed">
+      <div class="sidebar-menu">
+        <header class="logo-env">
+          <div class="sidebar-collapse" onclick="collapseSidebar()">
+            <a href="#" class="sidebar-collapse-icon with-animation">
+              <i class="entypo-menu"></i>
+            </a>
+          </div>
+        </header>
+        <%- include('partials/nav') %>
+      </div>
+      <div class="main-content">
+        <div class="row">
+          <div class="col-md-6 col-sm-8 clearfix"></div>
+          <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+            <ul class="list-inline links-list pull-right">
+              <li>Welcome <%= full_name %></li>
+              <li>
+                <a href="/logout"
+                  >Log Out <i class="entypo-logout right"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <h2>Health Status</h2>
+        <hr />
+        <% if (messages.error) { %>
+        <p style="color: red"><%= messages.error %></p>
+        <% } %> <% if (messages.success) { %>
+        <p style="color: green"><%= messages.success %></p>
+        <% } %> <% if (!healthRecords || healthRecords.length === 0) { %>
+        <p>No health status records found.</p>
+        <% } else { %>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Membership ID</th>
+              <th>User Name</th>
+              <th>Date of Birth</th>
+              <th>Gender</th>
+              <th>Joining Date</th>
+              <th>Calorie</th>
+              <th>Height (cm)</th>
+              <th>Weight (kg)</th>
+              <th>Fat</th>
+              <th>Remarks</th>
+              <th>Record Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% healthRecords.forEach(record => { %>
+            <tr>
+              <td><%= record.membership_id || 'N/A' %></td>
+              <td><%= record.user_name || 'N/A' %></td>
+              <td><%= record.dob || 'N/A' %></td>
+              <td><%= record.gender || 'N/A' %></td>
+              <td><%= record.joining_date || 'N/A' %></td>
+              <td><%= record.calorie || 'N/A' %></td>
+              <td><%= record.height || 'N/A' %></td>
+              <td><%= record.weight || 'N/A' %></td>
+              <td><%= record.fat || 'N/A' %></td>
+              <td><%= record.remarks || 'N/A' %></td>
+              <td><%= record.record_date || 'N/A' %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <% } %>
+        <a href="/health/new" class="btn btn-primary">Add Health Status</a>
+        <%- include('partials/footer') %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Gym | Add Health Status</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashMain.css" />
+    <link rel="stylesheet" type="text/css" href="/css/entypo.css" />
+    <link href="/css/a1style.css" type="text/css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/Script.js"></script>
+  </head>
+  <body class="page-body page-fade">
+    <div class="page-container sidebar-collapsed">
+      <div class="sidebar-menu">
+        <header class="logo-env">
+          <div class="sidebar-collapse" onclick="collapseSidebar()">
+            <a href="#" class="sidebar-collapse-icon with-animation">
+              <i class="entypo-menu"></i>
+            </a>
+          </div>
+        </header>
+        <%- include('partials/nav') %>
+      </div>
+      <div class="main-content">
+        <div class="row">
+          <div class="col-md-6 col-sm-8 clearfix"></div>
+          <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+            <ul class="list-inline links-list pull-right">
+              <li>Welcome <%= full_name %></li>
+              <li>
+                <a href="/logout"
+                  >Log Out <i class="entypo-logout right"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <h2>Add Health Status</h2>
+        <hr />
+        <% if (messages.error) { %>
+        <p style="color: red"><%= messages.error %></p>
+        <% } %> <% if (messages.success) { %>
+        <p style="color: green"><%= messages.success %></p>
+        <% } %>
+        <form action="/health/new" method="post">
+          <div class="form-group">
+            <label for="membership_id">Membership ID</label>
+            <select
+              name="membership_id"
+              id="membership_id"
+              class="form-control"
+              required
+            >
+              <option value="">Select Membership ID</option>
+              <% members.forEach(member => { %>
+              <option value="<%= member.membership_id %>">
+                <%= member.membership_id %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="user_name">User Name</label>
+            <input
+              type="text"
+              name="user_name"
+              id="user_name"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input
+              type="date"
+              name="dob"
+              id="dob"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input
+              type="text"
+              name="gender"
+              id="gender"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="joining_date">Joining Date</label>
+            <input
+              type="date"
+              name="joining_date"
+              id="joining_date"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="calorie">Calorie</label>
+            <input
+              type="number"
+              name="calorie"
+              id="calorie"
+              class="form-control"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="height">Height (cm)</label>
+            <input
+              type="number"
+              name="height"
+              id="height"
+              class="form-control"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="weight">Weight (kg)</label>
+            <input
+              type="number"
+              name="weight"
+              id="weight"
+              class="form-control"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="fat">Fat</label>
+            <input
+              type="number"
+              name="fat"
+              id="fat"
+              class="form-control"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="remarks">Remarks</label>
+            <textarea
+              name="remarks"
+              id="remarks"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <a href="/dashboard/admin" class="btn btn-secondary">Cancel</a>
+        </form>
+        <%- include('partials/footer') %>
+      </div>
+    </div>
+  </body>
+</html>

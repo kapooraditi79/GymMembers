@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Gym | Add Payment</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashMain.css" />
+    <link rel="stylesheet" type="text/css" href="/css/entypo.css" />
+    <link href="/css/a1style.css" type="text/css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/Script.js"></script>
+  </head>
+  <body class="page-body page-fade">
+    <div class="page-container sidebar-collapsed">
+      <div class="sidebar-menu">
+        <header class="logo-env">
+          <div class="sidebar-collapse" onclick="collapseSidebar()">
+            <a href="#" class="sidebar-collapse-icon with-animation">
+              <i class="entypo-menu"></i>
+            </a>
+          </div>
+        </header>
+        <%- include('partials/nav') %>
+      </div>
+      <div class="main-content">
+        <div class="row">
+          <div class="col-md-6 col-sm-8 clearfix"></div>
+          <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+            <ul class="list-inline links-list pull-right">
+              <li>Welcome <%= full_name %></li>
+              <li>
+                <a href="/logout"
+                  >Log Out <i class="entypo-logout right"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <h2>Add Payment</h2>
+        <hr />
+        <% if (messages.error) { %>
+        <p style="color: red"><%= messages.error %></p>
+        <% } %> <% if (messages.success) { %>
+        <p style="color: green"><%= messages.success %></p>
+        <% } %>
+        <form action="/payments/add" method="post">
+          <div class="form-group">
+            <label for="membership_id">Membership ID</label>
+            <select
+              name="membership_id"
+              id="membership_id"
+              class="form-control"
+              required
+            >
+              <option value="">Select Membership ID</option>
+              <% members.forEach(member => { %>
+              <option value="<%= member.membership_id %>">
+                <%= member.membership_id %>
+              </option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="current_plan">Current Plan</label>
+            <input
+              type="text"
+              name="current_plan"
+              id="current_plan"
+              class="form-control"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="new_plan">New Plan</label>
+            <input
+              type="text"
+              name="new_plan"
+              id="new_plan"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input
+              type="number"
+              name="amount"
+              id="amount"
+              class="form-control"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="validity">Validity</label>
+            <input
+              type="text"
+              name="validity"
+              id="validity"
+              class="form-control"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Add Payment</button>
+          <a href="/dashboard/admin" class="btn btn-secondary">Cancel</a>
+        </form>
+        <%- include('partials/footer') %>
+      </div>
+    </div>
+  </body>
+</html>

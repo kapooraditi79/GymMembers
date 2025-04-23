@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gym | Members</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/responsive.css" />
+  </head>
+  <body class="page-fade">
+    <%- include('partials/nav') %>
+    <div class="main-content">
+      <h2>Members</h2>
+      <hr />
+      <% if (messages.error) { %>
+      <p class="message error"><%= messages.error %></p>
+      <% } %> <% if (messages.success) { %>
+      <p class="message success"><%= messages.success %></p>
+      <% } %>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Membership ID</th>
+              <th>Name</th>
+              <th>Street Name</th>
+              <th>City</th>
+              <th>Zipcode</th>
+              <th>State</th>
+              <th>Gender</th>
+              <th>Date of Birth</th>
+              <th>Phone Number</th>
+              <th>Email ID</th>
+              <th>Joining Date</th>
+              <th>Plan</th>
+              <th>Amount</th>
+              <th>Validity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% members.forEach(member => { %>
+            <tr>
+              <td><%= member.membership_id %></td>
+              <td><%= member.name %></td>
+              <td><%= member.street_name %></td>
+              <td><%= member.city %></td>
+              <td><%= member.zipcode %></td>
+              <td><%= member.state %></td>
+              <td><%= member.gender %></td>
+              <td><%= member.dob %></td>
+              <td><%= member.phone_no %></td>
+              <td><%= member.email_id %></td>
+              <td><%= member.joining_date %></td>
+              <td><%= member.plan %></td>
+              <td><%= member.amount %></td>
+              <td><%= member.validity %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <a href="/users/add" class="btn btn-primary">Add New Member</a>
+      <%- include('partials/footer') %>
+    </div>
+  </body>
+</html>

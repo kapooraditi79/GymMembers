@@ -1,0 +1,68 @@
+/* Tablet (601px - 768px) */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(45deg, #415a77, #778da9);
+    padding: 1rem;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-menu li {
+    margin: 0.5rem 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .main-content {
+    margin-top: 100px;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+
+  th,
+  td {
+    padding: 0.5rem;
+  }
+}
+
+/* Mobile (≤600px) */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 0.75rem;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .table-container {
+    font-size: 0.8rem;
+  }
+
+  .main-content {
+    padding: 0 0.5rem;
+  }
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gym | Welcome</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/entypo.css" />
+  </head>
+  <body class="page-body login-page login-form-fall">
+    <div id="container">
+      <div class="login-container">
+        <div class="login-header login-caret">
+          <div class="login-content">
+            <h1 style="color: white">Fitness Club</h1>
+            <p>Welcome to the Gym Management System</p>
+          </div>
+        </div>
+        <div class="login-form">
+          <div class="login-content">
+            <% if (messages.error) { %>
+            <p style="color: red"><%= messages.error %></p>
+            <% } %>
+            <a href="/login" class="btn btn-primary">Login to Admin Panel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

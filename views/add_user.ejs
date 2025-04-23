@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Gym | Add New Member</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/dashMain.css" />
+    <link rel="stylesheet" type="text/css" href="/css/entypo.css" />
+    <link href="/css/a1style.css" type="text/css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body class="page-body page-fade">
+    <div class="page-container sidebar-collapsed">
+      <div class="sidebar-menu">
+        <header class="logo-env">
+          <div class="sidebar-collapse" onclick="collapseSidebar()">
+            <a href="#" class="sidebar-collapse-icon with-animation">
+              <i class="entypo-menu"></i>
+            </a>
+          </div>
+        </header>
+        <%- include('partials/nav') %>
+      </div>
+      <div class="main-content">
+        <div class="row">
+          <div class="col-md-6 col-sm-8 clearfix"></div>
+          <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+            <ul class="list-inline links-list pull-right">
+              <li>Welcome <%= full_name %></li>
+              <li>
+                <a href="/logout"
+                  >Log Out <i class="entypo-logout right"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <h2>Add New Member</h2>
+        <hr />
+        <% if (messages.error) { %>
+        <p style="color: red"><%= messages.error %></p>
+        <% } %> <% if (messages.success) { %>
+        <p style="color: green"><%= messages.success %></p>
+        <% } %>
+        <form action="/users/add" method="post">
+          <div class="form-group">
+            <label for="membership_id">Membership ID</label>
+            <input
+              type="text"
+              name="membership_id"
+              id="membership_id"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="street_name">Street Name</label>
+            <input
+              type="text"
+              name="street_name"
+              id="street_name"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="zipcode">Zipcode</label>
+            <input
+              type="text"
+              name="zipcode"
+              id="zipcode"
+              class="form-control"
+              pattern="[0-9]{5,10}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="state">State</label>
+            <input
+              type="text"
+              name="state"
+              id="state"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" class="form-control" required>
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input
+              type="date"
+              name="dob"
+              id="dob"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone_no">Phone Number</label>
+            <input
+              type="tel"
+              name="phone_no"
+              id="phone_no"
+              class="form-control"
+              pattern="[0-9]{10}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email_id">Email ID</label>
+            <input
+              type="email"
+              name="email_id"
+              id="email_id"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="joining_date">Joining Date</label>
+            <input
+              type="date"
+              name="joining_date"
+              id="joining_date"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="plan">Plan</label>
+            <input
+              type="text"
+              name="plan"
+              id="plan"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input
+              type="number"
+              name="amount"
+              id="amount"
+              class="form-control"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="validity">Validity</label>
+            <input
+              type="text"
+              name="validity"
+              id="validity"
+              class="form-control"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Add Member</button>
+          <a href="/dashboard/admin" class="btn btn-secondary">Cancel</a>
+        </form>
+        <%- include('partials/footer') %>
+      </div>
+    </div>
+  </body>
+</html>
