@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>Gym | Login</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/css/entypo.css" />
+    <link rel="stylesheet" type="text/css" href="/css/responsive.css" />
   </head>
   <body class="page-body login-page login-form-fall">
     <div id="container">
@@ -12,8 +12,197 @@
           <div class="login-content">
             <h1 style="color: white">Fitness Club</h1>
             <div class="login-progressbar-indicator">
-              <h3>43%</h3>
-              <span>logging in...</span>
+              <span>LOG IN</span>
+            </div>
+          </div>
+        </div>
+        <div class="login-progressbar">
+          <div></div>
+        </div>
+        <div class="login-form">
+          <div class="login-content">
+            <% if (messages.error) { %>
+            <p style="color: red"><%= messages.error %></p>
+            <% } %>
+            <form action="/login" method="post" id="bb">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="entypo-user"></i>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="User ID"
+                    class="form-control"
+                    name="user_id_auth"
+                    id="textfield"
+                    data-rule-minlength="6"
+                    data-rule-required="true"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-addon">
+                    <i class="entypo-key"></i>
+                  </div>
+                  <input
+                    type="password"
+                    name="pass_key"
+                    id="pwfield"
+                    class="form-control"
+                    data-rule-required="true"
+                    data-rule-minlength="6"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" name="btnLogin" class="btn btn-primary">
+                  Login <i class="entypo-login"></i>
+                </button>
+              </div>
+            </form>
+            <div class="login-bottom-links">
+              <a href="/forgot-password" class="link">Forgot your password?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gym | Login</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Times New Roman", Times, serif;
+        background: linear-gradient(to right, #001f3f, #0074d9);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #container {
+        width: 100%;
+        max-width: 400px;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .login-container {
+        width: 100%;
+      }
+
+      .login-header {
+        background: #001f3f;
+        padding: 20px;
+        text-align: center;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .login-content h1 {
+        margin: 0;
+        font-size: 32px;
+        color: white;
+        letter-spacing: 1px;
+      }
+
+      .login-progressbar {
+        height: 5px;
+        background: linear-gradient(to right, #0074d9, #00aaff);
+        margin-bottom: 20px;
+        border-radius: 10px;
+      }
+
+      .login-form {
+        padding: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .input-group {
+        display: flex;
+        align-items: center;
+        border: 1px solid #0074d9;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #f9f9f9;
+      }
+
+      .input-group-addon {
+        background-color: #0074d9;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .form-control {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        background: transparent;
+        outline: none;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .btn-primary {
+        width: 100%;
+        background: linear-gradient(to right, #0074d9, #00aaff);
+        border: none;
+        color: white;
+        padding: 12px;
+        font-size: 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-family: "Times New Roman", Times, serif;
+        transition: background 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(to right, #005299, #0088cc);
+      }
+
+      .login-bottom-links {
+        margin-top: 15px;
+        text-align: center;
+      }
+
+      .login-bottom-links .link {
+        color: #0074d9;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .login-bottom-links .link:hover {
+        text-decoration: underline;
+      }
+
+      p {
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body class="page-body login-page login-form-fall">
+    <div id="container">
+      <div class="login-container">
+        <div class="login-header login-caret">
+          <div class="login-content">
+            <h1 style="color: white">Fitness Club</h1>
+            <div class="login-progressbar-indicator">
+              <span>LOG IN</span>
             </div>
           </div>
         </div>
